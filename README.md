@@ -62,7 +62,7 @@ Start Vite in a second terminal:
 npm run dev
 ```
 
-Vite runs at `http://localhost:5173` by default. The client needs `VITE_CONVEX_URL` set to the selected deployment's Convex cloud URL, usually in the ignored `.env.local` file. If imports such as `@/convex/_generated/api` cannot be resolved, run `npx convex codegen` from the repository root, then restart Vite. The generated directory is intentionally excluded from Git and should not be edited by hand.
+Vite runs at `http://localhost:5173` by default. The client needs `VITE_CONVEX_URL` set to the selected deployment's Convex cloud URL, usually in the ignored `.env.local` file. If imports such as `@/convex/_generated/api` cannot be resolved, run `npx convex codegen` from the repository root, then restart Vite. Generated bindings are committed so clean CI builds can typecheck without running codegen; do not edit them by hand.
 
 ## Convex Configuration
 
@@ -95,7 +95,7 @@ src/
   main.tsx          Providers and route configuration
 ```
 
-Convex's generated files live in `src/convex/_generated/`. They are produced by the Convex CLI and are not committed. The application schema is in `src/convex/schema.ts`.
+Convex's generated files live in `src/convex/_generated/`. They are produced by the Convex CLI and committed so clean checkouts can build. Regenerate them after changing Convex functions or schema, and do not edit them by hand. The application schema is in `src/convex/schema.ts`.
 
 ## Commands
 
